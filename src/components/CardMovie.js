@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const CardMovie = (props) => {
-    console.log(props, 'masukkkk');
 
     const navigation = useNavigation();
 

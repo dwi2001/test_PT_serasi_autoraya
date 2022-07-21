@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, Image, FlatList, ScrollView, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
-
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ImageBackground, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -10,15 +9,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const DetailMovie = (props) => {
     const data = props.route.params.items
 
-
     return (
         <View style={{ flex: 1, backgroundColor: 'white', }}>
             <View style={{ flex: 1 }} >
                 <ImageBackground source={{ uri: 'https://image.tmdb.org/t/p/w500/' + data.poster_path }} style={{ width: '100%', height: 250, resizeMode: 'stretch' }} blurRadius={5}>
-
                     <Image source={{ uri: 'https://image.tmdb.org/t/p/w500/' + data.poster_path }} style={{ width: '100%', height: 250, resizeMode: 'contain' }} />
                 </ImageBackground>
-
                 <View style={{ ...styles.containerDesc, ...styles.shadow }}>
                     <View style={{ flexDirection: 'column', }}>
                         <Text>Title</Text>
@@ -49,8 +45,10 @@ const DetailMovie = (props) => {
                 </View>
             </View>
             <View style={{ padding: 24 }}>
-                <TouchableOpacity style={{ ...styles.btn }}>
-                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Add to List</Text>
+                <TouchableOpacity style={{ ...styles.btn }} onPress={() =>
+                    Alert.alert('', 'silahkan kembali')
+                }>
+                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Add to list</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -76,9 +74,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     containerDesc: {
-        flexDirection: 'row', padding: 20,
-
-
+        flexDirection: 'row',
+        padding: 20,
     }
 })
 
